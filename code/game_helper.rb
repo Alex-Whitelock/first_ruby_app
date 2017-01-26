@@ -1,6 +1,6 @@
 
 # This class is probably overkill, but I'm including it here
-# to illustrate how you'd define your own class.
+# to illustrate how you'd define your own class. 
 class GameHelper 
 
   # normally, instance variables (those that being with an @)
@@ -66,9 +66,18 @@ end
 #
 class Array
 
+  #Filter words to only those that contain no more than freq of char.
+  def char_count_less_than(char, freq)
+     self.select{ |term| term.scan(/#{char}/).count < freq }
+  end
   # filter the words to only those with size = len
   def with_word_length(len)
-    self.select{ |term| term.length == len }
+    self.select{ |term|
+      len.any?{ |a_length|
+        term.length
+      
+      }
+    }
   end
 
   # filter the words to only those that start with
@@ -107,6 +116,16 @@ class Array
   def word_count
     self.count
   end
+  
+  #Filter words that do not end with a particular character
+  def does_not_end_with(*letters)
+    self.select{ |term| 
+      letters.all?{|a_letter|
+        term[-1] == a_letter
+      }
+    }
+  end
+
 
 end
 
