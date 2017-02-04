@@ -136,6 +136,13 @@ class String
   # how many times does the passed-in char occur
   # in the string?
   def contains_count(char)
+    count = 0
+    self.split("").each do |i|
+      if i.downcase == char.downcase 
+        count =  count + 1
+      end
+    end
+    return count
   end
 end
 
@@ -143,3 +150,7 @@ end
 
 # find all 5-letter words that begin with 'e' but have no
 # more 'e' letters in them nor have an 'x' or 'y' in them
+
+
+x = "yolo"
+puts x.contains_count('O')
